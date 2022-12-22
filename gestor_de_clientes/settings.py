@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'mssql',
         'NAME': 'transbol',
         'USER': 'gmarin',
-        'PASSWORD': 'qwe1234',
+        'PASSWORD': 'qwe12345',
         'HOST': 'localhost',
         'PORT': '1433',
         'trusted_connection': 'yes',
