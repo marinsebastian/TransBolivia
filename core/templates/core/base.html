@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Russo+One'>
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}">
+  <title>TransBolivia</title>
+</head>
+<body class="notsolight-bg">
+    <nav class="py-6 px-7 indigo-bg flex justify-between items-center">
+      {% if request.path == '/' %}
+      <div class="flex items-center">
+        <button id="switch" class="w-32 px-4 py-3 bg-teal-600 hover:bg-teal-700 text-white text-l rounded-xl"">Clientes</button>
+      </div>
+      {% endif %}
+      <h1 class="text-white text-2xl gradient-text"><a href="{% url 'frontpage' %}">TransBolivia</a></h1>
+      <div>
+        <a href="{% url 'reserva:registrar' %}" class="p-3 bg-teal-600 hover:bg-teal-700 text-white text-l rounded-xl">Nueva Reserva</a>
+        <a href="{% url 'cliente:registrar' %}" class="p-3 bg-teal-600 hover:bg-teal-700 text-white text-l rounded-xl">Nuevo Cliente</a>
+      </div>
+    </nav>
+
+    <div class="px-6 py-4">
+      {% block content %}
+      {% endblock %}
+    </div>
+</body>
+</html>

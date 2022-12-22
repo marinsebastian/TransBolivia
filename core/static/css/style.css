@@ -1,0 +1,35 @@
+.hidden {
+    display: none;
+  }
+
+.gradient-text {
+  font-family: 'Russo One', sans-serif;
+  background: linear-gradient(to right, #d486c2, #dc85bb, #f48a93, #f68f7f, #f49668, #f2a455, #f9c252, #f8c956);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-stroke: #11373c;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #d486c2, #dc85bb, #f48a93, #f68f7f, #f49668, #f2a455, #f9c252, #f8c956);
+}
+
+.light-bg {
+  background: #faf8ef;
+}
+
+notsolight-bg {
+  background: #f9f7f0;
+}
+
+.indigo-bg {
+  background: #2f4245;
+}
+
+.pastelred-bg {
+  background: #f49668;
+}
+
+.pastelred-bg:hover {
+  background: #ea6851;
+}

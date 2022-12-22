@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="p-6 bg-gray-400 rounded-xl">
+    <form method="POST" action="{% url 'reserva:editar' pk=reserva.pk %}" class="space-y-4">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="codconductor" class="font-bold">Conductor</label><br>
+            <label class="flex items-center">
+                <select class="w-full py-4 px-6 rounded-xl bg-gray-700 text-white" name="codconductor" id="codconductor">
+                {% for conductor in conductores %}
+                <option value="{{ conductor.id }}" {% if conductor.id == reserva.codconductor.id %}selected{% endif %}>
+                    {{conductor.codempleado.nombre}} {{conductor.codempleado.apellido}}
+                    <span class="text-bold">{{conductor.tipodelicencia}}</span>
+                </option>
+                {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="mb-4">
+            <label for="codcliente" class="font-bold">Cliente</label><br>
+            <select name="codcliente" class="w-full py-4 px-6 rounded-xl bg-gray-700 text-white">
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}" {% if cliente.id == reserva.codcliente.id %}selected{% endif %}>
+                    {{ cliente.nombre }} {{ cliente.apellido }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="codcamion" class="font-bold">Camión</label><br>
+            <select name="codcamion" class="w-full py-4 px-6 rounded-xl bg-gray-700 text-white">
+                {% for camion in camiones %}
+                <option value="{{ camion.id }}" {% if camion.id == reserva.codcamion.id %}selected{% endif %}>
+                    {{camion.marca}} {{ camion.modelo }} ({{camion.id}})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="codruta" class="font-bold">Ruta</label><br>
+            <select name="codruta" class="w-full py-4 px-6 rounded-xl bg-gray-700 text-white">
+                {% for ruta in rutas %}
+                <option value="{{ ruta.id }}" {% if ruta.id == reserva.codruta.id %}selected{% endif %}>
+                    {{ ruta.origen|capfirst }}-{{ ruta.destino|capfirst }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="tipodereserva" class="font-bold">Tipo de reserva</label><br>
+            <input type="text" value="{{reserva.tipodereserva}}" name="tipodereserva" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <div class="mb-4">
+            <label for="costodereserva" class="font-bold">Costo de reserva</label><br>
+            <input type="text" value="{{reserva.costodereserva}}" name="costodereserva" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <div class="mb-4">
+            <label for="fechainicioreserva" class="font-bold">Fecha de inicio de reserva</label><br>
+            <input type="date" value="{{reserva.fechainicioreserva}}" name="fechainicioreserva" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <div class="mb-4">
+            <label for="fechafinreserva" class="font-bold">Fecha de fin de reserva</label><br>
+            <input type="date" value="{{reserva.fechafinreserva}}" name="fechafinreserva" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <div class="mb-4">
+            <label for="confirmacion" class="font-bold">Confirmación</label><br>
+            {{ form.confirmacion }}
+        </div>
+        <div class="mb-4">
+            <label for="anticiporeserva" class="font-bold">Anticipo de reserva</label><br>
+            <input type="text" value="{{reserva.anticiporeserva}}" name="anticiporeserva" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <div class="mb-4">
+            <label for="porcentajeperdido" class="font-bold">Porcentaje perdido</label><br>
+            <input type="text" value="{{reserva.porcentajeperdido}}" name="porcentajeperdido" class="text-white w-full py-4 px-6 rounded-xl bg-gray-700">
+        </div>
+        <button type="submit" class="p-3 bg-emerald-400 text-white text-l rounded-xl">Guardar</button>
+    </form>
+</div>
+{% endblock %}
