@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'gestor_de_clientes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
+        'ENGINE': os.environ['DATABASE_ENGINE'],
         'NAME': os.environ['DATABASE_NAME'],
         'USER': os.environ['DATABASE_USER'],
         'PASSWORD': os.environ['DATABASE_PASSWORD'],
