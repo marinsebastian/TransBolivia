@@ -33,3 +33,15 @@
 .pastelred-bg:hover {
   background: #ea6851;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+  .nav__item {
+    margin-bottom: 10px;
+  }
+  .nav__link {
+    font-size: 14px;
+  }
+}
